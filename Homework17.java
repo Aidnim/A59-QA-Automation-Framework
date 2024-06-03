@@ -17,6 +17,7 @@ public class Homework17 extends BaseTest {
     @Test
     public void addSongToPlaylist(){
 
+<<<<<<< Updated upstream
        // Set the path to the ChromeDriver executable
         System.setProperty("webdriver.chrome.driver", "/path/to/chromedriver");
 
@@ -77,6 +78,38 @@ public class Homework17 extends BaseTest {
         }
     }
 }
+=======
+     //navigate to page
+
+     //login to page
+
+     //search for a song
+
+     //click view all button
+
+     //click first song in search results
+
+     //click add to button
+
+     //choose the playlist to add it to
+
+     //verify with a message that contains text("Add 1 song into (actual playlist name)
+
+
+     //use the Assert.assertEquals()
+
+        provideEmail("india.messam@testpro.io");
+        providePassword("slcTalgy");
+        clickSubmit();
+
+        Thread.sleep(millis 2000);
+        clickAvatarIcon();
+
+        String randomPlaylist = generateRandomPlaylist;
+
+
+        driver.quit();
+>>>>>>> Stashed changes
 
     }
 
