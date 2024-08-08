@@ -35,6 +35,7 @@ public class PlaylistsTests extends BaseTest {
 
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
+        // testing changes
 
     }
 }
