@@ -33,8 +33,8 @@ String url = "https://qa.koel.app/";
     public void launchBrowser(String baseURL){
      //precondition
      // added ChromeOptions argument below to fix error
-        options.addArguments("--remote-allow-origins=*");
-
+        options.addArguments("disable-notifications","--remote-allow-origins=*", "--incognito","--start-maximized");
+        options.setExperimentalOption("excludeSwitches", new String[]{"enable-automation"});
         driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         driver.manage().window().maximize();
@@ -56,14 +56,13 @@ String url = "https://qa.koel.app/";
     protected void enterPassword(String password){
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
-        passwordField.clear();
-        passwordField.sendKeys("slcTalgy");
+        passwordField.sendKeys(password);
     }
 
     protected void enterEmail (String email){
         WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
         emailField.clear();
-        emailField.sendKeys("india.messam@testpro.io");
+        emailField.sendKeys(email);
     }
     protected void navigateToPage(String url){
         driver.get(url);}
