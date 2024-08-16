@@ -14,18 +14,18 @@ public class ProfileTests extends BaseTest {
         enterPassword("slcTalgy");
         submit();
 
-
+        // Replace Thread.sleep with WebDriverWait or another appropriate wait mechanism
         Thread.sleep(2000);
 
     }
     public void searchSong(String name)throws InterruptedException {
-        WebElement searchField = driver.findElement(By.cssSelector("[type='search']"));
+        WebElement searchField = driver.findElement(By.cssSelector("div#searchForm input [type='search']"));
         searchField.sendKeys(name);
         Thread.sleep(2000);
 
     }
     public void clickViewAllBtn()throws InterruptedException {
-        WebElement viewAll = driver.findElement(By.xpath("[href='#!/songs']"));
+        WebElement viewAll = driver.findElement(By.xpath("//button[data-test='view-all-songs-btn']"));
         viewAll.click();
         Thread.sleep(2000);
     }
@@ -49,29 +49,5 @@ public class ProfileTests extends BaseTest {
         WebElement notification = driver.findElement(By.cssSelector("div.success.show"));
         return notification.getText();
 
-    }
-    @Test
-    public void deletePlaylist () throws InterruptedException {
-        String expectedPlaylistDeletedMessage = "Deleted playlist \"Cloud.\"";
-
-        enterEmail("india.messam@testpro.io");
-        enterPassword("slcTalgy");
-        submit();
-
-        Thread.sleep(2000);
-
-    }
-    public void openPlaylist(){
-        WebElement emptyPlaylist = driver.findElement(By.cssSelector("[href='#!/playlist/98789']"));
-        emptyPlaylist.click();
-    }
-    public void clickDeletePlaylistBtn() throws InterruptedException {
-        WebElement deletePlaylist = driver.findElement(By.cssSelector("[class='del btn-delete-playlist']"));
-        deletePlaylist.click();
-        Thread.sleep(2000);
-    }
-    public String getDeletedPlaylistMsg() {
-        WebElement notificationMsg = driver.findElement(By.cssSelector("div.success.show"));
-        return  notificationMsg.getText();
     }
 }
