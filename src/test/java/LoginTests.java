@@ -10,7 +10,7 @@ public class LoginTests extends BaseTest {
 
 
         enterEmail("india.messam@testpro.io");
-        enterPassword("slcTalgy");
+        enterPassword("Testing123");
         submit();
 
         WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
@@ -24,7 +24,7 @@ public class LoginTests extends BaseTest {
 
 
     enterEmail("india.wrongemail@testpro.io");
-    enterPassword("slcTalgy");
+    enterPassword("Testing123");
     submit();
     Thread.sleep(2000);
 

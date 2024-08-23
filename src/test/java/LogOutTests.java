@@ -7,7 +7,7 @@ public class LogOutTests extends BaseTest {
     @Test
     public void LogOutBtnPresent () throws InterruptedException{
         enterEmail("india.messam@testpro.io");
-        enterPassword("slcTalgy");
+        enterPassword("Testing123");
         submit();
 
         WebElement LogoutBtn = driver.findElement(By.cssSelector("[class='fa fa-sign-out']"));
@@ -16,7 +16,7 @@ public class LogOutTests extends BaseTest {
     @Test
     public void SuccessfulLogoutAfterLogin () throws InterruptedException{
         enterEmail("india.messam@testpro.io");
-        enterPassword("slcTalgy");
+        enterPassword("Testing123");
         submit();
 
         WebElement LogoutBtn = driver.findElement(By.cssSelector("[class='fa fa-sign-out']"));
