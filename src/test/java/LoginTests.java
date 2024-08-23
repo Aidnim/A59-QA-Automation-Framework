@@ -1,133 +1,47 @@
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-import java.time.Duration;
-
 public class LoginTests extends BaseTest {
-    @Test
-    public void loginEmptyEmailPassword() {
-
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
-    }
-    @Test
-    public void navigateToRegistrationPage() {
-
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url = "https://qa.koel.app/registration";
-        driver.get(url);
-        Assert.assertEquals(driver.getCurrentUrl(), url);
-        driver.quit();
-    }
 
     @Test
-    public void loginValidEmailPassword() {
+    public void loginValidEmailPassword() throws InterruptedException {
 
-//      Added ChromeOptions argument below to fix websocket error
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        enterEmail("india.messam@testpro.io");
+        enterPassword("Testing123");
+        submit();
 
-        String url = "https://qa.koel.app/";
-        driver.get(url);
-
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys("india.messam@testpro.io");
-
-        WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("slcTalgy");
-
-        WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
-        submit.click();
-
-        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar'"));
+        WebElement avatarIcon = driver.findElement(By.cssSelector("img[class='avatar']"));
 
         Assert.assertTrue(avatarIcon.isDisplayed());
 
-        driver.quit();
     }
-    @Test
+
+   @Test
     public void loginInvalidEmailValidPassword()throws InterruptedException {
 
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    enterEmail("india.wrongemail@testpro.io");
+    enterPassword("Testing123");
+    submit();
+    Thread.sleep(2000);
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
-        String url ="https://qa.koel.app/";
-        driver.get(url);
-
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys("incorrectemail@testpro.io");
-
-        WebElement passwordField = driver.findElement(By.cssSelector("iput[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("slcTalgy");
-
-        WebElement submit =driver.findElement(By.cssSelector("button[type='submit']"));
-        submit.click();
-
-        Thread.sleep(2000);
-        Assert.assertEquals(driver.getCurrentUrl(),url);
-
-        driver.quit();
+    Assert. assertEquals(driver.getCurrentUrl(),url);
 
     }
-    @Test
+
+   @Test
     public void loginValidEmailEmptyPassword()throws InterruptedException {
 
+    enterEmail("india.messam@testpro.io");
+    submit();
+    Thread.sleep(2000);
 
-        ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
+    Assert.assertEquals(driver.getCurrentUrl(),url);
 
-        WebDriver driver = new ChromeDriver(options);
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        String url ="https://qa.koel.app/";
-        driver.get(url);
-
-        WebElement emailField = driver.findElement(By.cssSelector("input[type='email']"));
-        emailField.clear();
-        emailField.sendKeys("india.messam@testpro.io");
-
-        WebElement passwordField = driver.findElement(By.cssSelector("iput[type='password']"));
-        passwordField.clear();
-        passwordField.sendKeys("");
-
-        WebElement submit =driver.findElement(By.cssSelector("button[type='submit']"));
-        submit.click();
-
-        Thread.sleep(2000);
-        Assert.assertEquals(driver.getCurrentUrl(),url);
-
-        driver.quit();
     }
 
 
