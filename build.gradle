@@ -13,10 +13,27 @@ dependencies {
     testImplementation 'org.testng:testng:7.6.1'
     implementation 'org.seleniumhq.selenium:selenium-java:4.5.0'
     testImplementation 'io.github.bonigarcia:webdrivermanager:5.8.0'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-java
+    implementation("io.cucumber:cucumber-java:7.18.0")
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-core
+    implementation group: 'io.cucumber', name: 'cucumber-core', version: '7.18.1'
+
+    // https://mvnrepository.com/artifact/io.cucumber/cucumber-testng
+    implementation group: 'io.cucumber', name: 'cucumber-testng', version: '7.18.0'
+    // https://mvnrepository.com/artifact/io.cucumber/gherkin
+    implementation group: 'io.cucumber', name: 'gherkin', version: '28.0.0'
+
+
+
 }
 
 test {
     useTestNG() {
-        suites "src/test/resources/TestNG.xml"
+        suites "src/test/resources/Cucumber.xml"
+        systemProperty "browser", System.getProperty("browser")
+        //suites "src/test/resources/Smoke.xml"
+        //suites "src/test/resources/Regression.xml"
+        //suites "src/test/resources/TestNG.xml"
     }
 }
