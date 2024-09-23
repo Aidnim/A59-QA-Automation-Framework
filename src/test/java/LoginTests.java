@@ -19,7 +19,7 @@ public class LoginTests extends BaseTest {
         WebDriver driver = new ChromeDriver(options);
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
-        String url = "https://testpro.io/";
+        String url = "https://qa.koel.app/";
         driver.get(url);
         Assert.assertEquals(driver.getCurrentUrl(), url);
         driver.quit();
@@ -59,7 +59,7 @@ public class LoginTests extends BaseTest {
 
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
-        passwordField.sendKeys("slcTalgy");
+        passwordField.sendKeys("Testing123");
 
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
@@ -89,7 +89,7 @@ public class LoginTests extends BaseTest {
 
         WebElement passwordField = driver.findElement(By.cssSelector("iput[type='password']"));
         passwordField.clear();
-        passwordField.sendKeys("slcTalgy");
+        passwordField.sendKeys("Testing123");
 
         WebElement submit =driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
