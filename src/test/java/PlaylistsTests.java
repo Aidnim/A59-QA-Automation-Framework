@@ -31,7 +31,7 @@ public class PlaylistsTests extends BaseTest {
 
         WebElement passwordField = driver.findElement(By.cssSelector("input[type='password']"));
         passwordField.clear();
-        passwordField.sendKeys("slcTalgy");
+        passwordField.sendKeys("Testing123");
 
         WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
         submit.click();
